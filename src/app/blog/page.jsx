@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 async function getData() {
   const res = await fetch(
     "http://localhost:3000/api/posts",
@@ -19,7 +21,9 @@ const page = async () => {
   return (
     <div>
       {data.map((post) => (
-        <h1>{post.content}</h1>
+        <Link href={`blog/${post._id}`}>
+          <h1>{post.content}</h1>
+        </Link>
       ))}
     </div>
   );
